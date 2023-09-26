@@ -30,7 +30,7 @@ interface Props {
     name: string;
     bio: string;
     image: string;
-  };
+  } | null;
   btnTitle: string;
 }
 
@@ -88,7 +88,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
     }
 
     await updateUser({
-      userId: user.id,
+      userId: user?.id || "",
       username: values.username,
       name: values.name,
       bio: values.bio,
