@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import { boolean } from 'zod'
 
 const userSchema = new mongoose.Schema({
     id:{type: String, require: true},
@@ -14,7 +13,7 @@ const userSchema = new mongoose.Schema({
         }
     ],
     onboarded:{
-        type:boolean,
+        type: Boolean,
         default:false
     },
     communities:[
