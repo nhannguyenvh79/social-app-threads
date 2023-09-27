@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { fetchPostById } from "@/lib/actions/thread.action";
 import Comment from "@/components/forms/Comment";
 
-const page = async ({ params }: { params: { id: string } }) => {
+const Page = async ({ params }: { params: { id: string } }) => {
   if (!params.id) return null;
 
   const user = await currentUser();
@@ -59,4 +59,4 @@ const page = async ({ params }: { params: { id: string } }) => {
   );
 };
 
-export default page;
+export default Page;

@@ -1,15 +1,15 @@
 import ThreadCard from "@/components/cards/ThreadCard";
+import Pagination from "@/components/shared/Pagination";
 import { fetchPost } from "@/lib/actions/thread.action";
 import { currentUser } from "@clerk/nextjs";
 
-import { UserButton } from "@clerk/nextjs";
-{
-  /* <UserButton afterSignOutUrl="/" /> */
-}
-
-export default async function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) {
   const user = await currentUser();
-  const res = await fetchPost(1, 30);
+  const res = await fetchPost(searchParams.page ? +searchParams.page : 1, 30);
 
   return (
     <>
@@ -35,6 +35,11 @@ export default async function Home() {
           </>
         )}
       </section>
+      <Pagination
+        path="/"
+        pageNumber={searchParams?.page ? +searchParams.page : 1}
+        isNext={res?.isNext || false}
+      />
     </>
   );
 }
