@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import DeleteThread from "../forms/DeleteThread";
+import RepostButton from "../buttons/RepostButton";
 
 interface Props {
   postId: string;
@@ -69,13 +70,13 @@ const ThreadCard = ({
             <p className="text-small-regular text-light-2">{content}</p>
             <div className={`${isComment && "mb-10"} mt-5 flex flex-col gap-3`}>
               <div className="flex gap-3.5">
-                <Image
+                {/* <Image
                   className="cursor-pointer ogject-contain"
                   src="/assets/heart-gray.svg"
                   alt="heart"
                   width={24}
                   height={24}
-                />
+                /> */}
                 <Link href={`/thread/${postId}`}>
                   <Image
                     className="cursor-pointer ogject-contain"
@@ -85,16 +86,8 @@ const ThreadCard = ({
                     height={24}
                   />
                 </Link>
-                {!isComment && (
-                  <Image
-                    className="cursor-pointer ogject-contain"
-                    src="/assets/repost.svg"
-                    alt="repost"
-                    width={24}
-                    height={24}
-                  />
-                )}
-                {!isComment && (
+                {!isComment && <RepostButton link={`/thread/${postId}`} />}
+                {/* {!isComment && (
                   <Image
                     className="cursor-pointer ogject-contain"
                     src="/assets/share.svg"
@@ -102,7 +95,7 @@ const ThreadCard = ({
                     width={24}
                     height={24}
                   />
-                )}
+                )} */}
               </div>
               {isComment && comments.length > 0 && (
                 <Link
