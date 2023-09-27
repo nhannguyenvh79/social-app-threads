@@ -33,14 +33,16 @@ const Topbar = ({ userInfo }: { userInfo: any }) => {
             </SignOutButton>
           </SignedIn>
         </div>
-        <Image
-          src={userInfo.image}
-          alt="avt"
-          width={32}
-          height={32}
-          className="rounded-full object-cover shadow-2xl"
-          onClick={() => router.push(`/profile/edit`)}
-        />
+        {userInfo && (
+          <Image
+            src={userInfo?.image}
+            alt="avt"
+            width={32}
+            height={32}
+            className="rounded-full object-cover shadow-2xl"
+            onClick={() => router.push(`/profile/edit`)}
+          />
+        )}
       </div>
     </nav>
   );
